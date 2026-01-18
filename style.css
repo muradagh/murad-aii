@@ -1,0 +1,214 @@
+/* =========================
+   Global Reset
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+/* =========================
+   Body
+========================= */
+body {
+  background: linear-gradient(135deg, #020617, #0f172a);
+  color: #ffffff;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* =========================
+   App Container
+========================= */
+.app {
+  width: 380px;
+  max-width: 95%;
+  height: 600px;
+  background: #020617;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* =========================
+   Header
+========================= */
+header {
+  padding: 15px 18px;
+  background: #020617;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #1e293b;
+}
+
+header h1 {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+header button {
+  background: #2563eb;
+  border: none;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.3s;
+}
+
+header button:hover {
+  background: #1d4ed8;
+}
+
+/* =========================
+   Modes (Chat / Write / Translate)
+========================= */
+.modes {
+  display: flex;
+  gap: 6px;
+  padding: 10px;
+  background: #020617;
+}
+
+.mode {
+  flex: 1;
+  padding: 8px;
+  background: #1e293b;
+  border: none;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.3s;
+}
+
+.mode:hover {
+  background: #334155;
+}
+
+.mode.active {
+  background: #2563eb;
+}
+
+/* =========================
+   Chat Box
+========================= */
+.chat-box {
+  flex: 1;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+/* Scrollbar */
+.chat-box::-webkit-scrollbar {
+  width: 5px;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 10px;
+}
+
+/* =========================
+   Messages
+========================= */
+.user {
+  align-self: flex-end;
+  background: #2563eb;
+  padding: 10px 12px;
+  border-radius: 14px 14px 0 14px;
+  max-width: 80%;
+  font-size: 14px;
+  animation: slideRight 0.3s ease;
+}
+
+.ai {
+  align-self: flex-start;
+  background: #1e293b;
+  padding: 10px 12px;
+  border-radius: 14px 14px 14px 0;
+  max-width: 80%;
+  font-size: 14px;
+  animation: slideLeft 0.3s ease;
+}
+
+/* =========================
+   Input Area
+========================= */
+.input-box {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  background: #020617;
+  border-top: 1px solid #1e293b;
+}
+
+.input-box input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.input-box button {
+  background: #2563eb;
+  border: none;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.input-box button:hover {
+  background: #1d4ed8;
+}
+
+/* =========================
+   Animations
+========================= */
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* =========================
+   Responsive (Mobile)
+========================= */
+@media (max-width: 480px) {
+  .app {
+    height: 100vh;
+    border-radius: 0;
+  }
+}
