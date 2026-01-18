@@ -35,14 +35,25 @@ async function sendMessage() {
   addMessage(text, "user");
   input.value = "";
 
-  addMessage(lang === "ar" ? "⏳ جاري التفكير..." : "⏳ Thinking...", "ai");
+  // إضافة رسالة Thinking
+  const thinkingDiv = document.createElement("div");
+  thinkingDiv.className = "ai";
+  thinkingDiv.innerText = lang === "ar" ? "⏳ جاري التفكير..." : "⏳ Thinking...";
+  chatBox.appendChild(thinkingDiv);
+  chatBox.scrollTop = chatBox.scrollHeight;
 
-  const res = await fetch("http://localhost:3000/chat", {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({ message: text, mode, lang })
-  });
+  try {
+    // رابط Serverless Function على Vercel
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: text, mode, lang })
+    });
 
-  const data = await res.json();
-  chatBox.lastChild.innerText = data.reply;
+    const data = await res.json();
+    thinkingDiv.innerText = data.reply;
+  } catch (err) {
+    thinkingDiv.innerText = "❌ Error: Unable to get response from AI.";
+    console.error(err);
+  }
 }
