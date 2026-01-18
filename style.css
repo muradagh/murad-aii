@@ -5,7 +5,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 /* =========================
@@ -18,6 +18,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 /* =========================
@@ -108,6 +110,7 @@ header button:hover {
   flex-direction: column;
   gap: 10px;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
 }
 
 /* Scrollbar */
@@ -131,6 +134,7 @@ header button:hover {
   max-width: 80%;
   font-size: 14px;
   animation: slideRight 0.3s ease;
+  word-break: break-word;
 }
 
 .ai {
@@ -141,6 +145,7 @@ header button:hover {
   max-width: 80%;
   font-size: 14px;
   animation: slideLeft 0.3s ease;
+  word-break: break-word;
 }
 
 /* =========================
@@ -182,33 +187,29 @@ header button:hover {
    Animations
 ========================= */
 @keyframes slideLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes slideRight {
-  from {
-    opacity: 0;
-    transform: translateX(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(10px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 /* =========================
-   Responsive (Mobile)
+   Responsive (Mobile / iOS)
 ========================= */
 @media (max-width: 480px) {
   .app {
     height: 100vh;
     border-radius: 0;
+  }
+
+  input, button {
+    font-size: 16px;
+  }
+
+  header h1 {
+    font-size: 18px;
   }
 }
